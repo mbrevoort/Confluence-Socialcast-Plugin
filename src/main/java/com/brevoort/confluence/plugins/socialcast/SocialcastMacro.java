@@ -117,9 +117,12 @@ public class SocialcastMacro extends BaseMacro {
             title = getTagValue(node, "body");
 
           String url = getTagValue(node, "permalink-url");
+          Node userNode = getNode(node, "user");
+          String userUrl = getTagValue(userNode, "url");
+          String user = getTagValue(userNode, "username");
 
           if (node.getNodeType() == Node.ELEMENT_NODE) {
-            result.append("<a href='" + url + "'>" + title + "</a><br/>");
+            result.append("<a href='" + url + "'>" + title + "</a> by <a href='" + userUrl + "'>" + user + "</a><br/>");
           }
         }
       } else {
@@ -182,6 +185,21 @@ public class SocialcastMacro extends BaseMacro {
 
     }
     return "";
+  }
+
+  private Node getNode(Node node, String nodeName) {
+    System.out.println("null? " + node);
+    if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+      Element el = (Element) node;
+      NodeList nodeList = el.getElementsByTagName(nodeName);
+      if (nodeList.getLength() > 0) {
+        return nodeList.item(0);
+      }
+
+    }
+
+    return null;
   }
 
   private Credentials getCredentials() {
