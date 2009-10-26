@@ -1,0 +1,32 @@
+
+<html>
+    <head>
+        <title>Edit Socialcast User Auth Details</title>
+    </head>
+
+        <body>
+#applyDecorator("root")
+        #decoratorParam("context" "profile")
+        #decoratorParam("mode"  "edit-profile")
+        #decoratorParam("helper" $action.helper)
+        #decoratorParam("infopanel-width" "200px")
+
+            <div class="thickPadded">
+                <form name="editsocialcastuserauthinfo.form" method="POST" action="doeditsocialcastuserauthinfo.action">
+                    <table class="greyBox" width="450" cellpadding="2" cellspacing="4">
+                        #tag( TextField "label='Username'" "name='scUsername'" "size='50'" )
+                        #tag( TextField "label='Password'" "name='scPassword'" "size='50'" )
+    <tr>
+        <td colspan="2" align="center">
+            <br/>
+            #tag( Submit "name='confirm'" "value='update.name'" "theme='notable'" )
+            #tag( Submit "name='cancel'" "value='cancel.name'" "theme='notable'" )
+        </td>
+    </tr>
+</table>
+</form>
+</div>
+#end
+
+</body>
+</html>

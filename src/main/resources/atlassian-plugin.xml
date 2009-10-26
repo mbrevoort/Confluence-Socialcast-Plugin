@@ -1,0 +1,66 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.artifactId}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="configure.url">/admin/plugins/socialcast/configurePlugin.action</param>
+    </plugin-info>
+
+    <spring key="socialcastSettingsManager" name="Socialcast Settings Manager"
+            class="com.brevoort.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
+        <constructor-arg>
+            <ref bean="bandanaManager"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="cacheManager"/>
+        </constructor-arg>
+    </spring>
+
+
+    <xwork name="socialcastuserauthinfoactions" key="socialcastuserauthinfoactions">
+        <description>Actions for manipulating a user's socialcast auth information.</description>
+
+         <package name="socialcastuserauthinfo" extends="default" namespace="/socialcast">
+            <default-interceptor-ref name="defaultStack" />
+
+            <action name="editsocialcastuserauthinfo" class="com.brevoort.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="doDefault">
+                <result name="input" type="velocity">editUserAuthInfo.vm</result>
+            </action>
+
+            <action name="doeditsocialcastuserauthinfo" class="com.brevoort.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="execute">
+                <result name="input" type="velocity">editUserAuthInfo.vm</result>
+                <result name="success" type="velocity">editUserAuthInfo.vm</result>
+            </action>
+        </package>
+    </xwork>
+
+    <xwork name="socialcastAdminActions" key="socialcastAdminActions">
+            <description>Actions for configuring socialcast plugin.</description>
+
+             <package name="socialcastAdmin" extends="default" namespace="/admin/plugins/socialcast">
+                <default-interceptor-ref name="defaultStack" />
+
+                <action name="configurePlugin" class="com.brevoort.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="doDefault">
+                    <result name="success" type="velocity">configurePlugin.vm</result>
+                </action>
+
+                <action name="doconfigurePlugin" class="com.brevoort.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="execute">
+                    <result name="success" type="velocity">configurePlugin.vm</result>
+                </action>
+            </package>
+        </xwork>
+
+
+    <!-- Link in User Profile -->
+    <web-item key="editsocialcastuserauthinfoactions" name="Edit Socialcast Auth" section="system.profile.edit/yourprofile" weight="20">
+        <label key="Socialcast Details" />
+        <link>/socialcast/editsocialcastuserauthinfo.action</link>
+    </web-item>
+
+    <macro name="socialcast" class="com.brevoort.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
+    <!-- TODO: Add macro description -->
+    <!-- <description></description> -->
+    </macro>
+
+
+</atlassian-plugin>
