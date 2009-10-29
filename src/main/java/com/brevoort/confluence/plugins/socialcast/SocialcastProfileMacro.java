@@ -27,21 +27,19 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-
 /**
- * This very simple macro shows you the very basic use-case of displaying *something* on the Confluence page where it is used.
- * Use this example macro to toy around, and then quickly move on to the next example - this macro doesn't
- * really show you all the fun stuff you can do with Confluence.
+ * User: mike
+ * Date: Oct 28, 2009
+ * Time: 4:56:47 PM
  */
-public class SocialcastMacro extends SocialcastBaseMacro {
+public class SocialcastProfileMacro extends SocialcastBaseMacro {
 
-  static final Category log = Category.getInstance(SocialcastMacro.class);
+  static final Category log = Category.getInstance(SocialcastProfileMacro.class);
 
 
-  public SocialcastMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager) {
+  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager) {
     super(pageManager, spaceManager, personalInformationManager, contentPropertyManager, cacheManager);
   }
-
 
   /**
    * This method returns XHTML to be displayed on the page that uses this macro
@@ -49,7 +47,6 @@ public class SocialcastMacro extends SocialcastBaseMacro {
    */
   public String execute(Map params, String body, RenderContext renderContext)
           throws MacroException {
-
 
     // TODO: cleanup and change to use velocity template
     StringBuffer result = new StringBuffer();
@@ -59,8 +56,8 @@ public class SocialcastMacro extends SocialcastBaseMacro {
     User loggedInUser = AuthenticatedUserThreadLocal.getUser();
 
 
-    String query = (params.get("query") != null) ? (String) params.get("query") : "a";
-    String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/messages/search.xml?q=" + query;
+    String user = (params.get("user") != null) ? (String) params.get("user") : "";
+    String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/users/" + user + ".xml";
 
     String cacheKey = apiUrl;
     long cacheTTLSeconds = 0;
@@ -111,22 +108,25 @@ public class SocialcastMacro extends SocialcastBaseMacro {
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(new ByteArrayInputStream(apiCallResult.getBytes("UTF-8")));
         document.getDocumentElement().normalize();
-        NodeList nodeLst = document.getElementsByTagName("message");
+        NodeList nodeLst = document.getElementsByTagName("user");
 
-        for (int s = 0; s < nodeLst.getLength(); s++) {
+        if (0 < nodeLst.getLength()) {
 
-          Node node = nodeLst.item(s);
-          String title = XmlUtils.getTagValue(node, "title");
-          if (title == "")
-            title = XmlUtils.getTagValue(node, "body");
+          Node node = nodeLst.item(0);
+          String name = XmlUtils.getTagValue(node, "name");
+          if (name == "")
+            name = XmlUtils.getTagValue(node, "username");
 
-          String url = XmlUtils.getTagValue(node, "permalink-url");
-          Node userNode = XmlUtils.getNode(node, "user");
-          String userUrl = XmlUtils.getTagValue(userNode, "url");
-          String user = XmlUtils.getTagValue(userNode, "username");
+          //String url = XmlUtils.getTagValue(node, "permalink-url");
+          Node statusNode = XmlUtils.getNode(node, "status-message");
+          String lastStatus = XmlUtils.getTagValue(statusNode, "title");
+          if (lastStatus == "")
+            lastStatus = XmlUtils.getTagValue(node, "body");
+          //String user = XmlUtils.getTagValue(statusNode, "username");
 
           if (node.getNodeType() == Node.ELEMENT_NODE) {
-            result.append("<a href='" + url + "'>" + title + "</a> by <a href='" + userUrl + "'>" + user + "</a><br/>");
+            result.append("Name: " + name + "<br/>"); //<a href='" + url + "'>" + title + "</a> by <a href='" + userUrl + "'>" + user + "</a><br/>");
+            result.append("Last Status: " + lastStatus + "<br/>");
           }
         }
 
@@ -155,7 +155,6 @@ public class SocialcastMacro extends SocialcastBaseMacro {
 
 
     return "Error!";  //TODO something more elegant
-
   }
 
 }

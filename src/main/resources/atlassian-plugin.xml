@@ -16,6 +16,18 @@
         </constructor-arg>
     </spring>
 
+    <!-- profile layout -->
+    
+    <theme key="socialcasttheme" name="Socialcast Theme" class="com.atlassian.confluence.themes.BasicTheme">
+        <description>A Theme with extensions for the socialcast plugin</description>
+        <layout key="${project.groupId}.${project.artifactId}:profile"/>
+    </theme>
+
+    <layout key="profile" name="Profile Decorator" class="com.atlassian.confluence.themes.VelocityDecorator" overrides="/decorators/profile.vmd">
+        <resource type="velocity" name="decorator" location="socialcast/profile.vmd"/>
+    </layout>
+    <!-- END profile layout -->
+
 
     <xwork name="socialcastuserauthinfoactions" key="socialcastuserauthinfoactions">
         <description>Actions for manipulating a user's socialcast auth information.</description>
@@ -60,6 +72,10 @@
     <macro name="socialcast" class="com.brevoort.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
     <!-- TODO: Add macro description -->
     <!-- <description></description> -->
+    </macro>
+
+    <macro name="socialcast-profile" class="com.brevoort.confluence.plugins.socialcast.SocialcastProfileMacro" key="socialcast-profile">
+
     </macro>
 
 

@@ -1,0 +1,150 @@
+<!--
+    PROFILE DECORATOR
+    This decorator handles rendering pages within a user's profile.
+    Supports several modes: 'view-profile', 'edit-profile', 'change-password-profile', 'edit-notifications-profile'
+-->
+
+#set ($mode     = $params.get("mode"))
+#set ($helper  = $params.get("helper"))
+#set ($infoPanelWidth = $params.get("infopanel-width"))
+#set ($user = $helper.action.user)
+
+#requireResource("confluence.sections.profile.view:profile-styles")
+#infoPanelInitFromParams()
+
+#macro (userProfileMenu)
+    #set ($location = "system.profile.edit")
+    #set($userItems = $webInterfaceManager.getDisplayableSections($location, $action.webInterfaceContext))
+    #if (!$userItems.empty)
+    <div class="navmenu">
+    #foreach ($section in $userItems)
+        #set ($sectionKey = "$location/$section.key")
+        #set ($displayableItems = $webInterfaceManager.getDisplayableItems($sectionKey, $action.webInterfaceContext))
+        #if (!$displayableItems.isEmpty())
+            <div class="menuheading">$section.label.getDisplayableLabel($req, $action.webInterfaceContext)</div>
+            <ul class="static-menu">
+            #foreach ($item in $displayableItems)
+                <li><a class="$item.styleClass" href="$item.link.getDisplayableUrl($req, $action.webInterfaceContext)">$item.label.getDisplayableLabel($req, $action.webInterfaceContext)</a></li>
+            #end
+            </ul>
+        #end
+    #end
+    </div>
+    #end
+
+    #set ($location = "system.profile.actions")
+    #foreach ($section in $webInterfaceManager.getDisplayableSections($location, $action.webInterfaceContext))
+        #set ($sectionKey = "$location/$section.key")
+        #set ($displayableItems = $webInterfaceManager.getDisplayableItems($sectionKey, $action.webInterfaceContext))
+        #if (!$displayableItems.isEmpty())
+            <ul class="profile-action-section">
+                #foreach ($item in $displayableItems)
+                    #renderItem($item)
+                #end
+            </ul>
+        #end
+    #end
+#end
+
+#macro (userSettingsMenu)
+    <div class="navmenu">
+        #set ($location = "system.settings.edit")
+        #foreach ($section in $webInterfaceManager.getDisplayableSections($location, $action.webInterfaceContext))
+            #set ($sectionKey = "$location/$section.key")
+            #set ($displayableItems = $webInterfaceManager.getDisplayableItems($sectionKey, $action.webInterfaceContext))
+
+            #if (!$displayableItems.isEmpty())
+                <div class="menuheading">$section.label.getDisplayableLabel($req, $action.webInterfaceContext)</div>
+                <ul class="static-menu">
+                    #foreach ($item in $displayableItems)
+                        <li><a href="$item.link.getDisplayableUrl($req, $action.webInterfaceContext)">$item.label.getDisplayableLabel($req, $action.webInterfaceContext)</a></li>
+                    #end
+                </ul>
+            #end
+        #end
+    </div>
+#end
+
+<div class="pagebody">
+    #parse ( "/template/includes/actionerrors.vm" )
+    #set($tab = $mode)
+    #if($tab == "edit-profile" || $tab == "view-profile" || $tab == "edit-profile-three" || $tab == "edit-profile-single")
+        #set($tab = "view-profile")
+    #end
+    <div id="tab-navigation">
+        <ul class="tab-navigation">
+            #foreach ($item in $webInterfaceManager.getDisplayableItems("system.profile", $action.webInterfaceContext))
+            <li #if ($tab == $item.key) class="current tab" #else class="tab" #end>
+                <a href="$item.link.getDisplayableUrl($req, $action.webInterfaceContext)">$item.label.getDisplayableLabel($req, $action.webInterfaceContext)</a>
+            </li>
+            #end
+        </ul>
+    </div>
+
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="100%" valign="top">
+            #if ($mode == "edit-profile-three")
+
+                <div class="layout-container profile-page">
+                    
+                    <div class="section-1">
+                        #userProfileMenu()
+                    </div>
+
+                    $body
+
+                    <div class="profile-info section-3">
+                        $helper.renderConfluenceMacro("{socialcast-profile:user=12242|secondsToCache=600}")
+                    </div>
+                    
+
+                    
+                </div>
+
+            #elseif ($mode == "edit-profile")
+
+                <div class="layout-container profile-page">
+
+                    <div class="section-1">
+                        #userProfileMenu()
+                    </div>
+
+                    <div class="section-2"><div>
+                        $body
+                    </div></div>
+
+                </div>
+
+            #elseif ($mode == "settings")
+
+                <div class="layout-container profile-page">
+
+                    <div class="section-1">
+                        #userSettingsMenu()
+                    </div>
+
+                    <div class="section-2"><div>
+                        $body
+                    </div></div>
+
+                </div>
+
+            #else
+
+                $body
+
+            #end
+            </td>
+        ## INFO PANEL -- visible if infoPanelWidth is passed to applyDecorator call
+        #if ($infoPanelRequired)
+            <td width="$infoPanelWidth" valign="top" id="helptd">
+                #infoPanel(true true true true)
+            </td>
+        #end
+        </tr>
+    </table>
+</div>
+<!--MIKE-->
+#parse ( "/users/user-decorator-content.vm" )
+#parse ( "/breadcrumbs.vm" )
