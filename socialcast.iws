@@ -202,21 +202,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SocialcastMacro.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastMacro.java">
+      <file leaf-file-name="SocialcastMacro.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastMacro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="128" selection-start="2210" selection-end="2210" vertical-scroll-proportion="0.4192771">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="22" column="98" selection-start="1014" selection-end="1014" vertical-scroll-proportion="-10.153846">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SocialcastProfileMacro.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastProfileMacro.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastProfileMacro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="128" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
+            <state line="40" column="128" selection-start="1777" selection-end="1777" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,33 +223,13 @@
         </entry>
       </file>
       <file leaf-file-name="SocialcastBaseMacro.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastBaseMacro.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastBaseMacro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="94" selection-start="2296" selection-end="2296" vertical-scroll-proportion="-18.384615">
+            <state line="46" column="63" selection-start="2160" selection-end="2160" vertical-scroll-proportion="-18.384615">
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1256883408000" expanded="true" signature="60:920" placeholder="..." />
+                <marker date="1256915840000" expanded="true" signature="65:874" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XmlUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/XmlUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.vm" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/messages.vm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="68" selection-start="352" selection-end="352" vertical-scroll-proportion="-5.6842103">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -259,16 +237,34 @@
       <file leaf-file-name="atlassian-plugin.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/atlassian-plugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="110" selection-start="1348" selection-end="1348" vertical-scroll-proportion="-13.384615">
+            <state line="9" column="163" selection-start="579" selection-end="579" vertical-scroll-proportion="-4.1538463">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="configurePlugin.vm" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/admin/plugins/socialcast/configurePlugin.vm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="46" selection-start="514" selection-end="514" vertical-scroll-proportion="-8.210526">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editUserAuthInfo.vm" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/editUserAuthInfo.vm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="38" selection-start="700" selection-end="700" vertical-scroll-proportion="0.3756906">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DefaultSocialcastSettingsManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/DefaultSocialcastSettingsManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/DefaultSocialcastSettingsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1457" selection-end="3918" vertical-scroll-proportion="0.0">
+            <state line="38" column="0" selection-start="1477" selection-end="3938" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -277,9 +273,9 @@
         </entry>
       </file>
       <file leaf-file-name="SocialcastSettingsManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastSettingsManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastSettingsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="44" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
+            <state line="7" column="44" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -288,16 +284,16 @@
       <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="78" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
+            <state line="17" column="46" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="socialcast.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/socialcast.css">
+      <file leaf-file-name="TestExampleMacro.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/avalonconsult/confluence/plugins/TestExampleMacro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+            <state line="0" column="25" selection-start="12" selection-end="25" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -564,6 +560,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.avalonconsult.confluence.plugins" />
       <recent name="admin.plugins" />
       <recent name="com.brevoort.confluence.plugins.socialcast.actions" />
       <recent name="com.brevoort.confluence.plugins.socialcast" />
@@ -699,7 +696,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="253" y="114" width="1633" height="1041" extended-state="0" />
+    <frame x="157" y="153" width="1633" height="1041" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
@@ -709,7 +706,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19381313" sideWeight="0.6633987" order="0" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="8" side_tool="false" />
@@ -802,43 +799,29 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="8" selection-start="8" selection-end="50" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/admin/plugins/socialcast/configurePlugin.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="49" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastTheme.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastTheme.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1256780181000" expanded="true" signature="60:103" placeholder="..." />
+            <marker date="1256915840000" expanded="true" signature="65:108" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/CachedObjectWrapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/CachedObjectWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="44" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1256843427000" expanded="true" signature="77:398" placeholder="/**...*/" />
-            <marker date="1256843427000" expanded="true" signature="674:779" placeholder="/**...*/" />
-            <marker date="1256843427000" expanded="true" signature="1005:1033" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1080:1119" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1123:1265" placeholder="/**...*/" />
-            <marker date="1256843427000" expanded="true" signature="1311:1398" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1430:1456" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1501:1536" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1565:1590" placeholder="{...}" />
-            <marker date="1256843427000" expanded="true" signature="1594:1715" placeholder="/**...*/" />
+            <marker date="1256915840000" expanded="true" signature="82:403" placeholder="/**...*/" />
+            <marker date="1256915840000" expanded="true" signature="679:784" placeholder="/**...*/" />
+            <marker date="1256915840000" expanded="true" signature="1010:1038" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1085:1124" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1128:1270" placeholder="/**...*/" />
+            <marker date="1256915840000" expanded="true" signature="1316:1403" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1435:1461" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1506:1541" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1570:1595" placeholder="{...}" />
+            <marker date="1256915840000" expanded="true" signature="1599:1720" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -850,16 +833,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/editUserAuthInfo.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1051" selection-end="1051" vertical-scroll-proportion="-19.578947">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/messages.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="68" selection-start="352" selection-end="352" vertical-scroll-proportion="-5.6842103">
+        <state line="9" column="68" selection-start="357" selection-end="357" vertical-scroll-proportion="-5.6842103">
           <folding />
         </state>
       </provider>
@@ -871,70 +847,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/XmlUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="78" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
+        <state line="11" column="13" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/DefaultSocialcastSettingsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1477" selection-end="3938" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastSettingsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="44" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/XmlUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastBaseMacro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+        <state line="46" column="63" selection-start="2160" selection-end="2160" vertical-scroll-proportion="-18.384615">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1256915840000" expanded="true" signature="65:874" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastProfileMacro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="128" selection-start="1777" selection-end="1777" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastMacro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="98" selection-start="1014" selection-end="1014" vertical-scroll-proportion="-10.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="46" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/avalonconsult/confluence/plugins/TestExampleMacro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="12" selection-end="25" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/atlassian-plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="110" selection-start="1348" selection-end="1348" vertical-scroll-proportion="-13.384615">
+        <state line="9" column="163" selection-start="579" selection-end="579" vertical-scroll-proportion="-4.1538463">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/DefaultSocialcastSettingsManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/admin/plugins/socialcast/configurePlugin.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1457" selection-end="3918" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastSettingsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="44" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
+        <state line="13" column="46" selection-start="514" selection-end="514" vertical-scroll-proportion="-8.210526">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastBaseMacro.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/editUserAuthInfo.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="94" selection-start="2296" selection-end="2296" vertical-scroll-proportion="-18.384615">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1256883408000" expanded="true" signature="60:920" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastProfileMacro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="128" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brevoort/confluence/plugins/socialcast/SocialcastMacro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="128" selection-start="2210" selection-end="2210" vertical-scroll-proportion="0.4192771">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="17" column="38" selection-start="700" selection-end="700" vertical-scroll-proportion="0.3756906">
+          <folding />
         </state>
       </provider>
     </entry>

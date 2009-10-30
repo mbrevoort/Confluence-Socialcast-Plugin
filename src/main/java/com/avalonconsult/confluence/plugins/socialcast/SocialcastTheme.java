@@ -1,4 +1,4 @@
-package com.brevoort.confluence.plugins.socialcast;
+package com.avalonconsult.confluence.plugins.socialcast;
 
 import com.atlassian.confluence.themes.BasicTheme;
 

@@ -1,4 +1,4 @@
-package com.brevoort.confluence.plugins.socialcast;
+package com.avalonconsult.confluence.plugins.socialcast;
 
 import com.atlassian.bandana.BandanaManager;
 import com.atlassian.cache.Cache;
@@ -12,16 +12,16 @@ import org.apache.log4j.Logger;
  * User: mike
  * Date: Oct 25, 2009
  * Time: 2:28:23 PM
- * Persists and retrieves {@link com.brevoort.confluence.plugins.socialcast.SocialcastSettings} to/via Bandana.
+ * Persists and retrieves {@link com.avalonconsult.confluence.plugins.socialcast.SocialcastSettings} to/via Bandana.
  * The implementation caches the settings so you don't need to worry about object&lt;-&gt;XML serialization/deserialization overhead.
  */
 public class DefaultSocialcastSettingsManager implements SocialcastSettingsManager {
 
   private static final Logger LOG = Logger.getLogger(DefaultSocialcastSettingsManager.class);
 
-  private static final String CACHE_KEY = "com.brevoort.confluence.plugins.socialcast.settings";
+  private static final String CACHE_KEY = "com.avalonconsult.confluence.plugins.socialcast.settings";
 
-  private static final String SETTINGS_KEY = "com.brevoort.confluence.plugins.socialcast.settings";
+  private static final String SETTINGS_KEY = "com.avalonconsult.confluence.plugins.socialcast.settings";
 
   private final BandanaManager bandanaManager;
 

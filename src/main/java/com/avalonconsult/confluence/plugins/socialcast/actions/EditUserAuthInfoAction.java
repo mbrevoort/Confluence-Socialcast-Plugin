@@ -1,9 +1,9 @@
-package com.brevoort.confluence.plugins.socialcast.actions;
+package com.avalonconsult.confluence.plugins.socialcast.actions;
 
 import com.atlassian.confluence.core.ContentPropertyManager;
 import com.atlassian.confluence.user.actions.AbstractUserProfileAction;
 import com.atlassian.user.User;
-import com.brevoort.confluence.plugins.socialcast.UserAuthInfo;
+import com.avalonconsult.confluence.plugins.socialcast.UserAuthInfo;
 import com.opensymphony.util.TextUtils;
 import com.thoughtworks.xstream.XStream;
 import org.apache.log4j.Category;
@@ -17,7 +17,7 @@ import org.apache.log4j.Category;
 public class EditUserAuthInfoAction extends AbstractUserProfileAction {
 
   private static final Category log = Category.getInstance(EditUserAuthInfoAction.class);
-  public static final String USERAUTHINFO_PROPERTY_KEY = "com.brevoort.confluence.plugins.socialcast.userauthinfo";
+  public static final String USERAUTHINFO_PROPERTY_KEY = "com.avalonconsult.confluence.plugins.socialcast.userauthinfo";
 
   private ContentPropertyManager contentPropertyManager;
   private XStream xStream;

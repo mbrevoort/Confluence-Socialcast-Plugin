@@ -12,7 +12,8 @@
     <form name="editsocialcastuserauthinfo.form" method="POST" action="${req.contextPath}/admin/plugins/socialcast/doconfigurePlugin.action">
         <table class="greyBox" width="450" cellpadding="2" cellspacing="4">
             #tag( TextField "label='Default Username'" "name='defaultUsername'" "size='50'" )
-            #tag( TextField "label='Default Password'" "name='defaultPassword'" "size='50'" )
+            #tag( Password "label='Default Password'" "name='defaultPassword'" "size='50'" )
+
             #tag( TextField "label='API URL Root'" "name='apiUrlRoot'" "size='50'" )
         <tr>
         <td colspan="2" align="center">

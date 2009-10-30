@@ -1,4 +1,4 @@
-#requireResource("com.brevoort.confluence.plugins.socialcast:socialcast-macro-css")
+#requireResource("com.avalonconsult.confluence.plugins.socialcast:socialcast-macro-css")
 <div class="socialcast-messages">
 #if($title)
     <h2>$title</h2>

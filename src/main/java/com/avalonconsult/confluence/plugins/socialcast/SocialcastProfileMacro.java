@@ -1,4 +1,4 @@
-package com.brevoort.confluence.plugins.socialcast;
+package com.avalonconsult.confluence.plugins.socialcast;
 
 import com.atlassian.cache.CacheManager;
 import com.atlassian.confluence.core.ContentPropertyManager;
@@ -6,8 +6,6 @@ import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.confluence.spaces.SpaceManager;
 import com.atlassian.confluence.user.AuthenticatedUserThreadLocal;
 import com.atlassian.confluence.user.PersonalInformationManager;
-import com.atlassian.confluence.util.velocity.VelocityUtils;
-import com.atlassian.confluence.renderer.radeox.macros.MacroUtils;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.macro.MacroException;
 import com.atlassian.user.User;
@@ -28,25 +26,20 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.text.ParseException;
-
 
 /**
- * This very simple macro shows you the very basic use-case of displaying *something* on the Confluence page where it is used.
- * Use this example macro to toy around, and then quickly move on to the next example - this macro doesn't
- * really show you all the fun stuff you can do with Confluence.
+ * User: mike
+ * Date: Oct 28, 2009
+ * Time: 4:56:47 PM
  */
-public class SocialcastMacro extends SocialcastBaseMacro {
+public class SocialcastProfileMacro extends SocialcastBaseMacro {
 
-  static final Category log = Category.getInstance(SocialcastMacro.class);
+  static final Category log = Category.getInstance(SocialcastProfileMacro.class);
 
 
-  public SocialcastMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
+  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
     super(pageManager, spaceManager, personalInformationManager, contentPropertyManager, cacheManager, socialcastSettingsManager);
   }
-
 
   /**
    * This method returns XHTML to be displayed on the page that uses this macro
@@ -55,16 +48,16 @@ public class SocialcastMacro extends SocialcastBaseMacro {
   public String execute(Map params, String body, RenderContext renderContext)
           throws MacroException {
 
-    //StringBuffer result = new StringBuffer();
-    Map context = MacroUtils.defaultVelocityContext();
+    // TODO: cleanup and change to use velocity template
+    StringBuffer result = new StringBuffer();
+
     HttpClient client = new HttpClient();
 
     User loggedInUser = AuthenticatedUserThreadLocal.getUser();
 
 
-    String query = (params.get("query") != null) ? (String) params.get("query") : "";
-    int maxLength = (params.get("maxLength") != null) ? Integer.parseInt((String)params.get("maxLength"))  : 100;
-    String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/messages/search.xml?q=" + query;
+    String user = (params.get("user") != null) ? (String) params.get("user") : "";
+    String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/users/" + user + ".xml";
 
     String cacheKey = apiUrl;
     long cacheTTLSeconds = 0;
@@ -103,59 +96,43 @@ public class SocialcastMacro extends SocialcastBaseMacro {
         get.releaseConnection();
       }
     } else {
-      context.put("cached", Boolean.TRUE);
+      result.append("<!-- CACHED RESULT --> ");
     }
 
     if (apiCallResult != null) {
-      //System.out.println(apiCallResult);
       if (params.get("title") != null)
-        context.put("title", params.get("title"));
+        result.append("<h2>" + params.get("title") + "</h2>");
 
       try {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(new ByteArrayInputStream(apiCallResult.getBytes("UTF-8")));
         document.getDocumentElement().normalize();
-        NodeList nodeLst = document.getElementsByTagName("message");
+        NodeList nodeLst = document.getElementsByTagName("user");
 
-        ArrayList messages = new ArrayList();
-        for (int s = 0; s < nodeLst.getLength(); s++) {
+        if (0 < nodeLst.getLength()) {
 
-          Node node = nodeLst.item(s);
+          Node node = nodeLst.item(0);
+          String name = XmlUtils.getTagValue(node, "name");
+          if (name == "")
+            name = XmlUtils.getTagValue(node, "username");
+
+          //String url = XmlUtils.getTagValue(node, "permalink-url");
+          Node statusNode = XmlUtils.getNode(node, "status-message");
+          String lastStatus = XmlUtils.getTagValue(statusNode, "title");
+          if (lastStatus == "")
+            lastStatus = XmlUtils.getTagValue(node, "body");
+          //String user = XmlUtils.getTagValue(statusNode, "username");
+
           if (node.getNodeType() == Node.ELEMENT_NODE) {
-            Map itemMap = new HashMap();
-
-            String title = XmlUtils.getTagValue(node, "title");
-
-            if (title == "")
-              title = XmlUtils.getTagValue(node, "body");
-
-            itemMap.put("title", dotdotdot(title, maxLength));
-            itemMap.put("url", XmlUtils.getTagValue(node, "permalink-url"));
-            itemMap.put("icon", XmlUtils.getTagValue(node, "icon"));
-
-            itemMap.put("timeAgo", timeAgo(parseIso8601Date(XmlUtils.getTagValue(node, "created-at"))));
-            
-            Node userNode = XmlUtils.getNode(node, "user");
-            itemMap.put("userUrl", XmlUtils.getTagValue(userNode, "url"));
-            itemMap.put("user", XmlUtils.getTagValue(userNode, "username"));
-            Node avatarNode = XmlUtils.getNode(userNode, "avatars");
-            itemMap.put("userAvatar16", XmlUtils.getTagValue(avatarNode, "square16"));
-            itemMap.put("userAvatar30", XmlUtils.getTagValue(avatarNode, "square30"));
-            itemMap.put("userAvatar45", XmlUtils.getTagValue(avatarNode, "square45"));
-            itemMap.put("userAvatar70", XmlUtils.getTagValue(avatarNode, "square70"));
-
-            messages.add(itemMap);
-
+            result.append("Name: " + name + "<br/>"); //<a href='" + url + "'>" + title + "</a> by <a href='" + userUrl + "'>" + user + "</a><br/>");
+            result.append("Last Status: " + lastStatus + "<br/>");
           }
         }
 
-        context.put("messages", messages);
-
         // if we get down to here this means that we were able to parse the resposne, so go ahead and cache the apiCallResult
         cache(apiCallResult, cacheKey, cacheTTLSeconds);
-
-        return VelocityUtils.getRenderedTemplate("socialcast/messages.vm", context);
+        return result.toString();
 
       }
       catch (UnsupportedEncodingException ex) {
@@ -178,8 +155,6 @@ public class SocialcastMacro extends SocialcastBaseMacro {
 
 
     return "Error!";  //TODO something more elegant
-
   }
-
 
 }

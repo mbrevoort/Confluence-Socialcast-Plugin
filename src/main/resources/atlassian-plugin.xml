@@ -12,7 +12,7 @@
 
     <!--
     <spring key="socialcastSettingsManager" name="Socialcast Settings Manager"
-            class="com.brevoort.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
+            class="com.avalonconsult.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
         <constructor-arg>
             <ref bean="bandanaManager"/>
         </constructor-arg>
@@ -21,9 +21,9 @@
         </constructor-arg>
     </spring>
     -->
-    <component key="socialcastSettingsManager" class="com.brevoort.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
+    <component key="socialcastSettingsManager" class="com.avalonconsult.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
         <description>Socialcast Settings Manager</description>
-        <!--<interface>com.brevoort.confluence.plugins.socialcast.SocialcastSettingsManager</interface>  -->
+        <!--<interface>com.avalonconsult.confluence.plugins.socialcast.SocialcastSettingsManager</interface>  -->
     </component>
 
     <!-- profile layout -->
@@ -45,11 +45,11 @@
          <package name="socialcastuserauthinfo" extends="default" namespace="/socialcast">
             <default-interceptor-ref name="defaultStack" />
 
-            <action name="editsocialcastuserauthinfo" class="com.brevoort.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="doDefault">
+            <action name="editsocialcastuserauthinfo" class="com.avalonconsult.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="doDefault">
                 <result name="input" type="velocity">editUserAuthInfo.vm</result>
             </action>
 
-            <action name="doeditsocialcastuserauthinfo" class="com.brevoort.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="execute">
+            <action name="doeditsocialcastuserauthinfo" class="com.avalonconsult.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="execute">
                 <result name="input" type="velocity">editUserAuthInfo.vm</result>
                 <result name="success" type="velocity">editUserAuthInfo.vm</result>
             </action>
@@ -62,11 +62,11 @@
              <package name="socialcastAdmin" extends="default" namespace="/admin/plugins/socialcast">
                 <default-interceptor-ref name="defaultStack" />
 
-                <action name="configurePlugin" class="com.brevoort.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="doDefault">
+                <action name="configurePlugin" class="com.avalonconsult.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="doDefault">
                     <result name="success" type="velocity">configurePlugin.vm</result>
                 </action>
 
-                <action name="doconfigurePlugin" class="com.brevoort.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="execute">
+                <action name="doconfigurePlugin" class="com.avalonconsult.confluence.plugins.socialcast.actions.ConfigurePluginAction" method="execute">
                     <result name="success" type="velocity">configurePlugin.vm</result>
                 </action>
             </package>
@@ -79,12 +79,12 @@
         <link>/socialcast/editsocialcastuserauthinfo.action</link>
     </web-item>
 
-    <macro name="socialcast" class="com.brevoort.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
+    <macro name="socialcast" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
     <!-- TODO: Add macro description -->
     <!-- <description></description> -->
     </macro>
 
-    <macro name="socialcast-profile" class="com.brevoort.confluence.plugins.socialcast.SocialcastProfileMacro" key="socialcast-profile">
+    <macro name="socialcast-profile" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastProfileMacro" key="socialcast-profile">
 
     </macro>
 

@@ -1,4 +1,4 @@
-package com.brevoort.confluence.plugins.socialcast;
+package com.avalonconsult.confluence.plugins.socialcast;
 
 /**
  * User: mike

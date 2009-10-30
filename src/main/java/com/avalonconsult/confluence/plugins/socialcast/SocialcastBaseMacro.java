@@ -1,4 +1,4 @@
-package com.brevoort.confluence.plugins.socialcast;
+package com.avalonconsult.confluence.plugins.socialcast;
 
 import com.atlassian.cache.Cache;
 import com.atlassian.cache.CacheManager;
@@ -9,9 +9,8 @@ import com.atlassian.confluence.user.AuthenticatedUserThreadLocal;
 import com.atlassian.confluence.user.PersonalInformationManager;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
-import com.atlassian.spring.container.ContainerManager;
 import com.atlassian.user.User;
-import com.brevoort.confluence.plugins.socialcast.actions.EditUserAuthInfoAction;
+import com.avalonconsult.confluence.plugins.socialcast.actions.EditUserAuthInfoAction;
 import com.opensymphony.util.TextUtils;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.httpclient.Credentials;
@@ -21,9 +20,6 @@ import org.joda.time.format.ISODateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.util.Date;
-import java.util.TimeZone;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 /**
  * User: mike
@@ -41,7 +37,7 @@ public abstract class SocialcastBaseMacro extends BaseMacro {
   final CacheManager cacheManager;
   XStream xStream;
   static final Category log = Category.getInstance(EditUserAuthInfoAction.class);
-  private static final String CACHE_KEY = "com.brevoort.confluence.plugins.socialcast.SocialcastBaseMacro";
+  private static final String CACHE_KEY = "com.avalonconsult.confluence.plugins.socialcast.SocialcastBaseMacro";
 
   public SocialcastBaseMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
     this.pageManager = pageManager;

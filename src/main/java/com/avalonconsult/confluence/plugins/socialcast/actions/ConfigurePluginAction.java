@@ -1,8 +1,8 @@
-package com.brevoort.confluence.plugins.socialcast.actions;
+package com.avalonconsult.confluence.plugins.socialcast.actions;
 
 import com.atlassian.confluence.core.ConfluenceActionSupport;
-import com.brevoort.confluence.plugins.socialcast.SocialcastSettings;
-import com.brevoort.confluence.plugins.socialcast.SocialcastSettingsManager;
+import com.avalonconsult.confluence.plugins.socialcast.SocialcastSettings;
+import com.avalonconsult.confluence.plugins.socialcast.SocialcastSettingsManager;
 
 /**
  * User: mike
