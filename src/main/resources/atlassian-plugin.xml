@@ -6,6 +6,11 @@
         <param name="configure.url">/admin/plugins/socialcast/configurePlugin.action</param>
     </plugin-info>
 
+    <web-resource key="socialcast-macro-css">
+        <resource type="download" name="socialcast.css" location="socialcast/socialcast.css"/>
+    </web-resource>
+
+    <!--
     <spring key="socialcastSettingsManager" name="Socialcast Settings Manager"
             class="com.brevoort.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
         <constructor-arg>
@@ -15,6 +20,11 @@
             <ref bean="cacheManager"/>
         </constructor-arg>
     </spring>
+    -->
+    <component key="socialcastSettingsManager" class="com.brevoort.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
+        <description>Socialcast Settings Manager</description>
+        <!--<interface>com.brevoort.confluence.plugins.socialcast.SocialcastSettingsManager</interface>  -->
+    </component>
 
     <!-- profile layout -->
     

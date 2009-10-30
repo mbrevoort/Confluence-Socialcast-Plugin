@@ -7,13 +7,15 @@ package com.brevoort.confluence.plugins.socialcast;
  */
 public interface SocialcastSettingsManager {
 
-  SocialcastSettings getSocialcastSettings();
+  public void save(SocialcastSettings socialcastSettings);
 
-  String getDefaultUsername();
+  public SocialcastSettings getSocialcastSettings();
 
-  String getDefaultPassword();
+  public String getDefaultUsername();
 
-  String getApiUrlRoot();
+  public String getDefaultPassword();
 
-  void save(SocialcastSettings socialcastSettings);
+  public String getApiUrlRoot();
+
+
 }

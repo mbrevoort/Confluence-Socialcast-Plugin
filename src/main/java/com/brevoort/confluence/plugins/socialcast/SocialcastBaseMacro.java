@@ -17,6 +17,13 @@ import com.thoughtworks.xstream.XStream;
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.log4j.Category;
+import org.joda.time.format.ISODateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Date;
+import java.util.TimeZone;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 /**
  * User: mike
@@ -36,12 +43,12 @@ public abstract class SocialcastBaseMacro extends BaseMacro {
   static final Category log = Category.getInstance(EditUserAuthInfoAction.class);
   private static final String CACHE_KEY = "com.brevoort.confluence.plugins.socialcast.SocialcastBaseMacro";
 
-  public SocialcastBaseMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager) {
+  public SocialcastBaseMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
     this.pageManager = pageManager;
     this.spaceManager = spaceManager;
     this.contentPropertyManager = contentPropertyManager;
     this.personalInformationManager = personalInformationManager;
-    this.socialcastSettingsManager = (SocialcastSettingsManager) ContainerManager.getComponent("socialcastSettingsManager");
+    this.socialcastSettingsManager = socialcastSettingsManager;
     this.cacheManager = cacheManager;
   }
 
@@ -134,6 +141,52 @@ public abstract class SocialcastBaseMacro extends BaseMacro {
 
     return returnValue;
 
+  }
+
+//  public static Date parseIso8601Date(String dateString) throws ParseException {
+//      return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateString);
+//  }
+
+  public static Date parseIso8601Date(String dateString) { //throws ParseException {
+    DateTimeFormatter formatter = ISODateTimeFormat.dateTimeNoMillis() ;
+    return new Date(formatter.parseMillis(dateString));
+  }
+
+  public static String timeAgo(Date date) {
+
+		Date now =  new Date();
+		long millis = now.getTime() - date.getTime();
+		String s = "";
+
+		if(millis < 60000L)
+			s = millis / 1000L + " second";
+		else if(millis < 3600000L)
+			s = millis / 60000L + " minute";
+		else if(millis < 86400000L)
+			s = millis / 3600000L + " hour";
+		else if(millis < 2635200000L)
+			s = millis / 86400000L + " day";
+		else
+			s = millis / 2635200000L + " month";
+
+
+		if(!s.startsWith("1 "))
+			s +=  "s";
+			
+		return s + " ago";
+  }
+
+  public static String dotdotdot(String text, int length) {
+    String result = text;
+    if(text != null) {
+      if(text.length() > length) {
+        int nextSpaceIndex = text.indexOf(" ", length);
+        if(nextSpaceIndex > 0)
+          result = text.substring(0, nextSpaceIndex) + "...";  
+      } 
+    }
+
+    return result;
   }
 
 

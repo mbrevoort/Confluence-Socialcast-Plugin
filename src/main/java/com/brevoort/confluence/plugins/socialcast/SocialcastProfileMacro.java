@@ -37,8 +37,8 @@ public class SocialcastProfileMacro extends SocialcastBaseMacro {
   static final Category log = Category.getInstance(SocialcastProfileMacro.class);
 
 
-  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager) {
-    super(pageManager, spaceManager, personalInformationManager, contentPropertyManager, cacheManager);
+  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
+    super(pageManager, spaceManager, personalInformationManager, contentPropertyManager, cacheManager, socialcastSettingsManager);
   }
 
   /**
