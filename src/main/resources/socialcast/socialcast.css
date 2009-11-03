@@ -1,5 +1,5 @@
 .socialcast-message { clear:both; }
-.socialcast-message img.socialcast-icon { float:left; margin: 2px 5px 2px 5px; }
+.socialcast-message img.socialcast-icon { float:left; margin: 2px 5px 2px 5px; width:16px;}
 .socialcast-message img.socialcast-avatar {  float:left; margin: 2px 5px 2px 0px; }
 .socialcast-message .time-ago { font-size:.8em; }
 .socialcast-message .message-detail { margin-left:25px; }

@@ -124,21 +124,27 @@ public class SocialcastMacro extends SocialcastBaseMacro {
           if (node.getNodeType() == Node.ELEMENT_NODE) {
             Map itemMap = new HashMap();
 
-            String title = XmlUtils.getTagValue(node, "title");
+            String title = XmlUtils.getTagValue(node, "body");
 
             if (title == "")
-              title = XmlUtils.getTagValue(node, "body");
+              title = XmlUtils.getTagValue(node, "title");
+
+            if(title == "")
+              title = XmlUtils.getTagValue(node, "action");
 
             itemMap.put("title", dotdotdot(title, maxLength));
             itemMap.put("url", XmlUtils.getTagValue(node, "permalink-url"));
             itemMap.put("icon", XmlUtils.getTagValue(node, "icon"));
+            itemMap.put("action", XmlUtils.getTagValue(node, "action"));
+            itemMap.put("numerOfComments", XmlUtils.getCountOfChildNodes(XmlUtils.getChildNode(node, "comments"), "comment"));
+
 
             itemMap.put("timeAgo", timeAgo(parseIso8601Date(XmlUtils.getTagValue(node, "created-at"))));
             
-            Node userNode = XmlUtils.getNode(node, "user");
+            Node userNode = XmlUtils.getChildNode(node, "user");
             itemMap.put("userUrl", XmlUtils.getTagValue(userNode, "url"));
             itemMap.put("user", XmlUtils.getTagValue(userNode, "username"));
-            Node avatarNode = XmlUtils.getNode(userNode, "avatars");
+            Node avatarNode = XmlUtils.getChildNode(userNode, "avatars");
             itemMap.put("userAvatar16", XmlUtils.getTagValue(avatarNode, "square16"));
             itemMap.put("userAvatar30", XmlUtils.getTagValue(avatarNode, "square30"));
             itemMap.put("userAvatar45", XmlUtils.getTagValue(avatarNode, "square45"));

@@ -6,10 +6,11 @@
 
 #foreach($message in $messages)
     <div class="socialcast-message">
-        <img class="socialcast-icon" src="$message.icon"/>
+        <img class="socialcast-icon" src="$message.icon" alt="$message.action"/>
         <img src="$message.userAvatar16" class="socialcast-avatar"/>
         <div class="message-detail">
         <a href="$message.url">$message.title</a>
+        ($message.numerOfComments) 
         by <a href="$message.userUrl">$message.user</a> <span class="time-ago">$!message.timeAgo</span>
         </div>
     </div>

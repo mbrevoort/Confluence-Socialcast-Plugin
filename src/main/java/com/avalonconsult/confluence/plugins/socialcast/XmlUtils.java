@@ -44,4 +44,37 @@ public class XmlUtils {
     return null;
   }
 
+  public static Node getChildNode(Node node, String nodeName) {
+    if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+      NodeList nodeList = node.getChildNodes();
+      for(int i=0; i < nodeList.getLength(); i++) {
+        Node n = nodeList.item(i);
+        if(n.getNodeName().equals(nodeName)) {
+          return n;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  public static int getCountOfChildNodes(Node node, String nodeName) {
+    int count = 0;
+
+    if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+      NodeList nodeList = node.getChildNodes();
+      for(int i=0; i < nodeList.getLength(); i++) {
+        Node n = nodeList.item(i);
+        if(n.getNodeName().equals(nodeName)) {
+          count++;
+        }
+      }
+
+    }
+
+    return count;
+  }
+
 }
