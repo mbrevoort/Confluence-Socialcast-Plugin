@@ -59,12 +59,16 @@ public class SocialcastMacro extends SocialcastBaseMacro {
     Map context = MacroUtils.defaultVelocityContext();
     HttpClient client = new HttpClient();
 
-    User loggedInUser = AuthenticatedUserThreadLocal.getUser();
-
-
     String query = (params.get("query") != null) ? (String) params.get("query") : "";
+    String scUserId = (params.get("scUserId") != null) ? (String) params.get("scUserId") : "";
     int maxLength = (params.get("maxLength") != null) ? Integer.parseInt((String)params.get("maxLength"))  : 100;
-    String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/messages/search.xml?q=" + query;
+
+    // if a socialcast user id was passed in then get the users message streat, otherwise execute the query
+    String apiUrl = (scUserId != "") ?
+            socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/users/" + scUserId + "/messages.xml":
+            socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/messages/search.xml?q=" + query ;
+
+    log.debug("Sociacast API URL is " + apiUrl);
 
     String cacheKey = apiUrl;
     long cacheTTLSeconds = 0;

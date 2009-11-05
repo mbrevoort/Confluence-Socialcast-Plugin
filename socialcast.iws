@@ -202,10 +202,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="atlassian-plugin.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="atlassian-plugin.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/atlassian-plugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="42" selection-start="4299" selection-end="4299" vertical-scroll-proportion="-20.961538">
+            <state line="26" column="45" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.50567263">
               <folding />
             </state>
           </provider>
@@ -238,10 +238,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postMessageForm.vm" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="postMessageForm.vm" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/postMessageForm.vm">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="59" selection-start="632" selection-end="632" vertical-scroll-proportion="0.26923078">
+            <state line="14" column="59" selection-start="632" selection-end="632" vertical-scroll-proportion="-8.842105">
               <folding />
             </state>
           </provider>
@@ -279,7 +279,7 @@
       <file leaf-file-name="SocialcastMacro.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastMacro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="86" selection-start="2551" selection-end="2632" vertical-scroll-proportion="0.0">
+            <state line="67" column="121" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -759,7 +759,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="159" y="156" width="1440" height="828" extended-state="0" />
+    <frame x="193" y="112" width="1440" height="828" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
@@ -927,20 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/atlassian-plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="42" selection-start="4299" selection-end="4299" vertical-scroll-proportion="-20.961538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastMacro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="86" selection-start="2551" selection-end="2632" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/actions/PostMessageAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="58" selection-start="1561" selection-end="1561" vertical-scroll-proportion="-11.538462">
@@ -973,7 +959,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/socialcast/postMessageForm.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="59" selection-start="632" selection-end="632" vertical-scroll-proportion="0.26923078">
+        <state line="14" column="59" selection-start="632" selection-end="632" vertical-scroll-proportion="-8.842105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avalonconsult/confluence/plugins/socialcast/SocialcastMacro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="121" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/atlassian-plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="45" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.50567263">
           <folding />
         </state>
       </provider>

@@ -14,6 +14,10 @@
        <param name="content-type" value="image/gif"/>
     </resource>
 
+    <resource type="download" name="socialcast_logo_icon.png" location="socialcast/socialcast_logo_icon.png">
+       <param name="content-type" value="image/png"/>
+    </resource>
+    
     <!--
     <spring key="socialcastSettingsManager" name="Socialcast Settings Manager"
             class="com.avalonconsult.confluence.plugins.socialcast.DefaultSocialcastSettingsManager">
@@ -88,12 +92,14 @@
         <link>/socialcast/editsocialcastuserauthinfo.action</link>
     </web-item>
 
-    <macro name="socialcast" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
+    <macro name="socialcast" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastMacro" key="socialcast"
+            icon="/download/resources/com.avalonconsult.confluence.plugins.socialcast/socialcast_logo_icon.png"
+            hide-body="true">
     <!-- TODO: Add macro description -->
     <!-- <description></description> -->
         <!-- Specifies which macro browser category this macro should display in. -->
         <category name="external-content"/>
-        <!-- Defines the parameters this macro may consume. -->
+        <!-- Defines the parameters this macro may consume. -->                   e
         <parameters>
             <parameter name="query" type="string" required="true"/>
             <parameter name="title" type="string" required="false"/>
@@ -104,7 +110,28 @@
         </parameters>
     </macro>
 
-    <macro name="socialcast-post" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastPostMacro" key="socialcast-post">
+    <macro name="socialcast-user-stream" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastMacro" key="socialcast-user-stream"
+            icon="/download/resources/com.avalonconsult.confluence.plugins.socialcast/socialcast_logo_icon.png"
+            hide-body="true">
+    <!-- TODO: Add macro description -->
+    <!-- <description></description> -->
+        <!-- Specifies which macro browser category this macro should display in. -->
+        <category name="external-content"/>
+        <!-- Defines the parameters this macro may consume. -->
+        <parameters>
+            <parameter name="scUserId" type="string" required="true"/>
+            <parameter name="title" type="string" required="false"/>
+            <parameter name="maxLength" type="string" required="false"/>
+            <parameter name="secondsToCache" type="string" required="false">
+                <alias name="Number of Seconds to Cache"/>
+            </parameter>
+        </parameters>
+    </macro>
+
+    <macro name="socialcast-post" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastPostMacro" key="socialcast-post"
+            icon="/download/resources/com.avalonconsult.confluence.plugins.socialcast/socialcast_logo_icon.png"
+            hide-body="true">
+        <category name="external-content"/>
         <parameters>
             <parameter name="gracefulNoCreds" type="string" required="false"/>
         </parameters>
