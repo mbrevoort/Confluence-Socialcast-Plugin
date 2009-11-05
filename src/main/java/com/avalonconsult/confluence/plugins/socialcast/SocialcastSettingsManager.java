@@ -1,5 +1,8 @@
 package com.avalonconsult.confluence.plugins.socialcast;
 
+import org.apache.commons.httpclient.Credentials;
+import com.atlassian.user.User;
+
 /**
  * User: mike
  * Date: Oct 25, 2009
@@ -16,6 +19,12 @@ public interface SocialcastSettingsManager {
   public String getDefaultPassword();
 
   public String getApiUrlRoot();
+
+  public Credentials getCredentials();
+
+  public Credentials getUserCredentials();
+
+  public UserAuthInfo getUserAuthInfo(User user);
 
 
 }

@@ -9,6 +9,7 @@ import com.atlassian.confluence.user.PersonalInformationManager;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.macro.MacroException;
 import com.atlassian.user.User;
+import com.avalonconsult.confluence.plugins.socialcast.util.XmlUtils;
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.auth.AuthScope;
@@ -37,8 +38,8 @@ public class SocialcastProfileMacro extends SocialcastBaseMacro {
   static final Category log = Category.getInstance(SocialcastProfileMacro.class);
 
 
-  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
-    super(pageManager, spaceManager, personalInformationManager, contentPropertyManager, cacheManager, socialcastSettingsManager);
+  public SocialcastProfileMacro(PageManager pageManager, SpaceManager spaceManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
+    super(pageManager, spaceManager, cacheManager, socialcastSettingsManager);
   }
 
   /**
@@ -72,8 +73,7 @@ public class SocialcastProfileMacro extends SocialcastBaseMacro {
     String apiCallResult = getCached(cacheKey);
 
     if (apiCallResult == null) {
-      UserAuthInfo userAuthInfo = getUserAuthInfo(loggedInUser);
-      Credentials creds = getCredentials();
+      Credentials creds = socialcastSettingsManager.getCredentials();
       client.getState().setCredentials(AuthScope.ANY, creds);
       GetMethod get = new GetMethod(apiUrl);
       get.setDoAuthentication(true);

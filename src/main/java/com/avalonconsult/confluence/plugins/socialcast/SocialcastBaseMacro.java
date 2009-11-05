@@ -39,11 +39,9 @@ public abstract class SocialcastBaseMacro extends BaseMacro {
   static final Category log = Category.getInstance(EditUserAuthInfoAction.class);
   private static final String CACHE_KEY = "com.avalonconsult.confluence.plugins.socialcast.SocialcastBaseMacro";
 
-  public SocialcastBaseMacro(PageManager pageManager, SpaceManager spaceManager, PersonalInformationManager personalInformationManager, ContentPropertyManager contentPropertyManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
+  public SocialcastBaseMacro(PageManager pageManager, SpaceManager spaceManager, CacheManager cacheManager, SocialcastSettingsManager socialcastSettingsManager) {
     this.pageManager = pageManager;
     this.spaceManager = spaceManager;
-    this.contentPropertyManager = contentPropertyManager;
-    this.personalInformationManager = personalInformationManager;
     this.socialcastSettingsManager = socialcastSettingsManager;
     this.cacheManager = cacheManager;
   }
@@ -64,43 +62,6 @@ public abstract class SocialcastBaseMacro extends BaseMacro {
     this.xStream = xStream;
   }
 
-  protected Credentials getCredentials() {
-    String username = null;
-    String password = null;
-    User loggedInUser = AuthenticatedUserThreadLocal.getUser();
-    UserAuthInfo userAuthInfo = getUserAuthInfo(loggedInUser);
-    if (userAuthInfo != null && userAuthInfo.getUsername() != null && !userAuthInfo.getUsername().trim().equals("")) {
-      username = userAuthInfo.getUsername();
-      password = userAuthInfo.getPassword();
-    } else {
-      username = socialcastSettingsManager.getSocialcastSettings().getDefaultUsername();
-      password = socialcastSettingsManager.getSocialcastSettings().getDefaultPassword();
-    }
-
-    return new UsernamePasswordCredentials(username, password);
-
-  }
-
-  protected UserAuthInfo getUserAuthInfo(User user) {
-    String userAuthInfoXml = contentPropertyManager.getTextProperty(personalInformationManager.getPersonalInformation(user),
-            EditUserAuthInfoAction.USERAUTHINFO_PROPERTY_KEY);
-
-    if (xStream == null) {
-      xStream = new XStream();
-      xStream.setClassLoader(UserAuthInfo.class.getClassLoader());
-      xStream.alias("user-auth-info", UserAuthInfo.class);
-    }
-    if (TextUtils.stringSet(userAuthInfoXml)) {
-      try {
-        return (UserAuthInfo) xStream.fromXML(userAuthInfoXml);
-      }
-      catch (Throwable t) {
-        log.warn("Error unpacking user's personal information: " + user + ": " + t.getMessage(), t);
-      }
-    }
-
-    return new UserAuthInfo();
-  }
 
   /* CACHE METHODS */
   protected void cache(String content, String key, long ttl) {

@@ -1,0 +1,35 @@
+#requireResource("confluence.web.resources:jquery")
+#requireResource("com.avalonconsult.confluence.plugins.socialcast:socialcast-macro-css")
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery("#socialcast-post-$key").click(function() {
+            jQuery("#socialcast-post-$key").hide();
+            jQuery("#loading-$key").show();
+            jQuery.ajax({
+               type: "POST",
+               url: "$req.contextPath/socialcast/postsocialcastmessage.action",
+               data: "title=" + jQuery("#title-$key").val() + "&url=" + window.location,
+               success: function(msg){
+                 jQuery("#loading-$key").hide();
+                 jQuery("#result-$key").html("Message Posted");
+                 jQuery("#result-$key").fadeOut(2000, function () {
+                     jQuery("#socialcast-post-$key").show();
+                     jQuery("#title-$key").val("");
+                 });
+
+               }
+             });
+
+        });
+    });
+
+
+</script>
+<div class="socialcast-post-message">
+      <textarea id="title-$key" name="title-$key"></textarea>
+      <button id="socialcast-post-$key">Share</button>
+      <img id="loading-$key" src="$req.contextPath/download/resources/com.avalonconsult.confluence.plugins.socialcast/ajax-loader.gif" style="display:none;"'>
+      <span id="result-$key" class="socialcast-post-message-result"></span>
+</div>

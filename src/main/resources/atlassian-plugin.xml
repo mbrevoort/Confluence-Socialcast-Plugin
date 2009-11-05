@@ -1,4 +1,4 @@
-<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.artifactId}" plugins-version="2">
+<atlassian-plugin key="com.avalonconsult.confluence.plugins.socialcast" name="Socialcast" plugins-version="2">
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
@@ -9,6 +9,10 @@
     <web-resource key="socialcast-macro-css">
         <resource type="download" name="socialcast.css" location="socialcast/socialcast.css"/>
     </web-resource>
+
+    <resource type="download" name="ajax-loader.gif" location="socialcast/ajax-loader.gif">
+       <param name="content-type" value="image/gif"/>
+    </resource>
 
     <!--
     <spring key="socialcastSettingsManager" name="Socialcast Settings Manager"
@@ -39,7 +43,7 @@
     <!-- END profile layout -->
 
 
-    <xwork name="socialcastuserauthinfoactions" key="socialcastuserauthinfoactions">
+    <xwork name="socialcastuseractions" key="socialcastuseractions">
         <description>Actions for manipulating a user's socialcast auth information.</description>
 
          <package name="socialcastuserauthinfo" extends="default" namespace="/socialcast">
@@ -52,6 +56,11 @@
             <action name="doeditsocialcastuserauthinfo" class="com.avalonconsult.confluence.plugins.socialcast.actions.EditUserAuthInfoAction" method="execute">
                 <result name="input" type="velocity">editUserAuthInfo.vm</result>
                 <result name="success" type="velocity">editUserAuthInfo.vm</result>
+            </action>
+
+            <action name="postsocialcastmessage" class="com.avalonconsult.confluence.plugins.socialcast.actions.PostMessageAction" method="execute">
+                <result name="success" type="velocity-xml">postMessageSuccess.vm</result>
+                <result name="error"   type="velocity-xml">postMessageFailure.vm</result>
             </action>
         </package>
     </xwork>
@@ -74,7 +83,7 @@
 
 
     <!-- Link in User Profile -->
-    <web-item key="editsocialcastuserauthinfoactions" name="Edit Socialcast Auth" section="system.profile.edit/yourprofile" weight="20">
+    <web-item key="editsocialcastuserauthinfo" name="Edit Socialcast Auth" section="system.profile.edit/yourprofile" weight="20">
         <label key="Socialcast Details" />
         <link>/socialcast/editsocialcastuserauthinfo.action</link>
     </web-item>
@@ -82,7 +91,22 @@
     <macro name="socialcast" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastMacro" key="socialcast">
     <!-- TODO: Add macro description -->
     <!-- <description></description> -->
+        <!-- Specifies which macro browser category this macro should display in. -->
+        <category name="external-content"/>
+        <!-- Defines the parameters this macro may consume. -->
+        <parameters>
+            <parameter name="query" type="string" required="true"/>
+            <parameter name="title" type="string" required="false"/>
+            <parameter name="maxLength" type="string" required="false"/>
+            <parameter name="secondsToCache" type="string" required="false">
+                <alias name="Number of Seconds to Cache"/>
+            </parameter>
+        </parameters>
     </macro>
+
+    <macro name="socialcast-post" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastPostMacro" key="socialcast-post">
+    </macro>
+
 
     <macro name="socialcast-profile" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastProfileMacro" key="socialcast-profile">
 

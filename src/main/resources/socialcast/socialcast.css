@@ -3,3 +3,7 @@
 .socialcast-message img.socialcast-avatar {  float:left; margin: 2px 5px 2px 0px; }
 .socialcast-message .time-ago { font-size:.8em; }
 .socialcast-message .message-detail { margin-left:25px; }
+
+
+.socialcast-post-message {  padding:5px 5px 5px 5px; }   
+.socialcast-post-message textarea { width:400px; height:20px; overflow:hidden; }
