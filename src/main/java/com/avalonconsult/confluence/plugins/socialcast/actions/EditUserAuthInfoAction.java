@@ -45,13 +45,13 @@ public class EditUserAuthInfoAction extends AbstractUserProfileAction {
 
   public String doDefault() throws Exception {
     userAuthInfo = getUserAuthInfo(getRemoteUser());
-    System.out.println("test " + userAuthInfo);
     return super.doDefault();
   }
 
   public String execute() throws Exception {
+    // TODO add validation by attempting to authenticate first
     setUserAuthInfo(getRemoteUser(), userAuthInfo);
-    System.out.println("test " + userAuthInfo);
+    addActionMessage("Configuration Saved");
     return super.execute();
   }
 

@@ -1,1 +1,1 @@
-<result>Failed</result>
+<result>$action.status</result>

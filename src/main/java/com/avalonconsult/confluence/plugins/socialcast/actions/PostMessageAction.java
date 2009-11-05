@@ -1,11 +1,10 @@
 package com.avalonconsult.confluence.plugins.socialcast.actions;
 
 import com.atlassian.confluence.core.ConfluenceActionSupport;
-import com.atlassian.renderer.v2.macro.MacroException;
 import com.avalonconsult.confluence.plugins.socialcast.SocialcastSettingsManager;
+import com.opensymphony.webwork.ServletActionContext;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.Credentials;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.log4j.Category;
@@ -19,28 +18,33 @@ public class PostMessageAction  extends ConfluenceActionSupport {
 
   private static final Category log = Category.getInstance(PostMessageAction.class);
   private String title;
-  private String url;
+  private String link;
   private SocialcastSettingsManager socialcastSettingsManager;
+  private int status = 0;
 
   public String execute() throws Exception {
     // post the message
-    System.out.println("In PostMessageAction");
+
     String result = SUCCESS;
     HttpClient client = new HttpClient();
     String apiUrl = socialcastSettingsManager.getSocialcastSettings().getApiUrlRoot() + "/api/messages.xml";
     String apiCallResult = null;
+
 
     Credentials creds = socialcastSettingsManager.getUserCredentials();
     client.getState().setCredentials(AuthScope.ANY, creds);
     PostMethod post = new PostMethod(apiUrl);
     post.setDoAuthentication(true);
     post.addParameter("message[title]", title);
-    if(url != null && !url.trim().equals(""))
-      post.addParameter("message[url]", url);
+    if(link != null && !link.trim().equals(""))
+      post.addParameter("message[url]", link);
+
+    System.out.println(post.getParameter("message[url]"));
 
     try {
       // execute the GET
-      int status = client.executeMethod(post);
+      status = client.executeMethod(post);
+      ServletActionContext.getRequest().setAttribute("status", status);
 
       // expect a status of 201 (created)
       if (status == 201) {
@@ -75,12 +79,12 @@ public class PostMessageAction  extends ConfluenceActionSupport {
     this.title = title;
   }
 
-  public String getUrl() {
-    return url;
+  public String getLink() {
+    return link;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void setLink(String link) {
+    this.link = link;
   }
 
   public SocialcastSettingsManager getSocialcastSettingsManager() {
@@ -89,5 +93,9 @@ public class PostMessageAction  extends ConfluenceActionSupport {
 
   public void setSocialcastSettingsManager(SocialcastSettingsManager socialcastSettingsManager) {
     this.socialcastSettingsManager = socialcastSettingsManager;
+  }
+
+  public int getStatus() {
+    return status;
   }
 }

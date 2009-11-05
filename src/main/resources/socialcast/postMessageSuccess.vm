@@ -1,1 +1,1 @@
-<result>Success</result>
+<result>$action.status</result>

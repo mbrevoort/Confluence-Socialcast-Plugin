@@ -84,7 +84,7 @@
 
     <!-- Link in User Profile -->
     <web-item key="editsocialcastuserauthinfo" name="Edit Socialcast Auth" section="system.profile.edit/yourprofile" weight="20">
-        <label key="Socialcast Details" />
+        <label key="Socialcast Credentials" />
         <link>/socialcast/editsocialcastuserauthinfo.action</link>
     </web-item>
 
@@ -105,6 +105,9 @@
     </macro>
 
     <macro name="socialcast-post" class="com.avalonconsult.confluence.plugins.socialcast.SocialcastPostMacro" key="socialcast-post">
+        <parameters>
+            <parameter name="gracefulNoCreds" type="string" required="false"/>
+        </parameters>
     </macro>
 
 

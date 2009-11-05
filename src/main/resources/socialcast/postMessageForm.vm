@@ -7,24 +7,48 @@
         jQuery("#socialcast-post-$key").click(function() {
             jQuery("#socialcast-post-$key").hide();
             jQuery("#loading-$key").show();
+
+            var postData = {title: jQuery("#title-$key").val()}; //, link: window.location.href};
             jQuery.ajax({
                type: "POST",
                url: "$req.contextPath/socialcast/postsocialcastmessage.action",
-               data: "title=" + jQuery("#title-$key").val() + "&url=" + window.location,
-               success: function(msg){
-                 jQuery("#loading-$key").hide();
-                 jQuery("#result-$key").html("Message Posted");
-                 jQuery("#result-$key").fadeOut(2000, function () {
-                     jQuery("#socialcast-post-$key").show();
-                     jQuery("#title-$key").val("");
-                 });
+               cache: false,
+               data: postData,
+               dataType: "xml",
+               success: function(xml){
+                 var result = jQuery(xml).find("result").text();
+                 if(result == "201") {
+                     jQuery("#loading-$key").hide();
+                     jQuery("#result-$key").html("<span style='color:green'>Message Posted</span>");
+                     jQuery("#result-$key").show();
+                     jQuery("#result-$key").fadeOut(2000, function () {
+                         jQuery("#socialcast-post-$key").show();
+                         jQuery("#title-$key").val("");
+                     });
+                 } else if(result == "401") {
+                     socialcastPostError$key(result, "Access Denied ");                   
+                 }else {
+                     socialcastPostError$key(result);
+                 }
 
+               },
+               error : function (xmlHttpRequest, textStatus, errorThrown) {
+                 socialcastPostError$key(textStatus);
                }
              });
 
         });
     });
 
+    function socialcastPostError$key(status, message) {
+        message = (message) ? message : "";
+        jQuery("#loading-$key").hide();
+        jQuery("#result-$key").html("<span style='color:red'>Error! " + message + "(" + status + ")</span>");
+        jQuery("#result-$key").show();
+        jQuery("#result-$key").fadeOut(3000, function () {
+            jQuery("#socialcast-post-$key").show();
+        });
+    }
 
 </script>
 <div class="socialcast-post-message">

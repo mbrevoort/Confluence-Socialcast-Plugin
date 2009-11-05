@@ -1,3 +1,3 @@
-<div>
-    You need to set your Socialcast Credentials before you can post messages    
+<div class="socialcast-post-message-no-creds">
+    Socialcast message posting disabled. You must set your Socialcast Credentials under your profile.
 </div>

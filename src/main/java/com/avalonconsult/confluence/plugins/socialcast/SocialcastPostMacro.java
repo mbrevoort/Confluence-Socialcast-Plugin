@@ -60,7 +60,8 @@ public class SocialcastPostMacro extends SocialcastBaseMacro {
 
     Map context = MacroUtils.defaultVelocityContext();
     HttpClient client = new HttpClient();
-    context.put("key", new Random().nextInt());
+    context.put("key", Math.abs(new Random().nextInt()));
+    String gracefulNoCreds = (params.get("gracefulNoCreds") != null) ? (String)params.get("gracefulNoCreds") : "";
 
     User loggedInUser = AuthenticatedUserThreadLocal.getUser();
 
@@ -68,6 +69,8 @@ public class SocialcastPostMacro extends SocialcastBaseMacro {
 
     if(creds != null) {
       return VelocityUtils.getRenderedTemplate("socialcast/postMessageForm.vm", context);
+    } else if(gracefulNoCreds.equals("true")) {
+      return "";  
     } else {
       return VelocityUtils.getRenderedTemplate("socialcast/postMessageNoCred.vm", context);
     }
